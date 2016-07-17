@@ -1,0 +1,147 @@
+-- at least 15 movices
+INSERT INTO Movie 
+(
+    title,
+    genre,
+    cast,
+    length,
+    rate,
+    synopsis,
+    release_date
+)
+VALUES
+(
+    'movie1',
+    'genre1',
+    'cast1',
+    60.30,
+    18,
+    'synopsis1',
+    '2016-07-08'
+),
+(
+    'movie2',
+    'genre2',
+    'cast2',
+    160.30,
+    18,
+    'synopsis2',
+    '2016-07-06'
+),
+(
+    'movie3',
+    'genre3',
+    'cast3',
+    150.10,
+    18,
+    'synopsis3',
+    '2016-07-05'
+),
+(
+    'movie4',
+    'genre4',
+    'cast4',
+    140.32,
+    18,
+    'synopsis5',
+    '2016-07-09'
+),
+(
+    'movie5',
+    'genre5',
+    'cast5',
+    130.30,
+    18,
+    'synopsis5',
+    '2016-07-08'
+),
+(
+    'movie6',
+    'genre6',
+    'cast6',
+    160.30,
+    18,
+    'synopsis6',
+    '2016-07-07'
+),
+(
+    'movie7',
+    'genre7',
+    'cast7',
+    160.30,
+    5,
+    'synopsis7',
+    '2016-07-06'
+),
+(
+    'movie8',
+    'genre8',
+    'cast8',
+    140.30,
+    18,
+    'synopsis8',
+    '2016-07-07'
+),
+(
+    'movie9',
+    'genre9',
+    'cast9',
+    150.30,
+    18,
+    'synopsis9',
+    '2016-07-05'
+),
+(
+    'movie10',
+    'genre10',
+    'cast10',
+    140.30,
+    18,
+    'synopsis10',
+    '2016-07-03'
+),
+(
+    'movie11',
+    'genre11',
+    'cast11',
+    160.30,
+    18,
+    'synopsis11',
+    '2016-07-04'
+),
+(
+    'movie12',
+    'genre12',
+    'cast12',
+    130.30,
+    18,
+    'synopsis12',
+    '2016-07-04'
+),
+(
+    'movie13',
+    'genre13',
+    'cast13',
+    140.25,
+    18,
+    'synopsis13',
+    '2016-07-01'
+),
+(
+    'movie14',
+    'genre14',
+    'cast14',
+    115.30,
+    18,
+    'synopsis14',
+    '2016-07-08'
+),
+(
+    'movie15',
+    'genre15',
+    'cast15',
+    160.30,
+    18,
+    'synopsis15',
+    '2016-07-08'
+);

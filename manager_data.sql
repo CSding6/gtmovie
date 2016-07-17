@@ -1,0 +1,37 @@
+INSERT INTO Manager
+(
+    username,
+    email,
+    password
+)
+VALUES
+(
+    'manager1',
+    'manager1@gmail.com',
+    'manager1password'
+),
+(
+    'manager2',
+    'manager2@gmail.com',
+    'manager2password'
+),
+(
+    'manager3',
+    'manager3@gmail.com',
+    'manager3password'
+),
+(
+    'manager4',
+    'manager4@gmail.com',
+    'manager4password'
+),
+(
+    'manager5',
+    'manager5@gmail.com',
+    'manager5password'
+),
+(
+    'manager6',
+    'manager6@gmail.com',
+    'manager6password'
+);

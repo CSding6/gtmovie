@@ -1,0 +1,115 @@
+INSERT INTO Review
+(
+    review_ID,
+    title,
+    comment,
+    rating,
+    username
+)
+VALUES
+(
+    1,
+    'movie1',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    2,
+    'movie2',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    3,
+    'movie3',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    4,
+    'movie4',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    5,
+    'movie5',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    6,
+    'movie6',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    7,
+    'movie7',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    8,
+    'movie8',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    9,
+    'movie9',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    10,
+    'movie10',
+    'good!',
+    4.5,
+    'user1'
+),
+
+(
+    11,
+    'movie11',
+    'good!',
+    4.5,
+    'user12'
+),
+(
+    12,
+    'movie12',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    13,
+    'movie13',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    14,
+    'movie14',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    15,
+    'movie15',
+    'good!',
+    4.5,
+    'user1'
+);

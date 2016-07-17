@@ -1,0 +1,113 @@
+-- at least 20 customers
+INSERT INTO Customer 
+(
+    username,
+    email,
+    password
+)
+VALUES
+(
+    'user1',
+    'user1@gmail.com',
+    'user1password'
+),
+(
+    'user2',
+    'user2@gmail.com',
+    'user2password'
+),
+(
+    'user3',
+    'user3@gmail.com',
+    'user3password'
+),
+(
+    'user4',
+    'user4@gmail.com',
+    'user4password'
+),
+(
+    'user5',
+    'user5@gmail.com',
+    'user5password'
+),
+(
+    'user6',
+    'user6@gmail.com',
+    'user6password'
+),
+(
+    'user7',
+    'user7@gmail.com',
+    'user7password'
+),
+(
+    'user8',
+    'user8@gmail.com',
+    'user8password'
+),
+(
+    'user9',
+    'user9@gmail.com',
+    'user9password'
+),
+(
+    'user10',
+    'user10@gmail.com',
+    'user10password'
+),
+(
+    'user11',
+    'user11@gmail.com',
+    'user11password'
+),
+(
+    'user12',
+    'user12@gmail.com',
+    'user12password'
+),
+(
+    'user13',
+    'user13@gmail.com',
+    'user13password'
+),
+(
+    'user14',
+    'user14@gmail.com',
+    'user14password'
+),
+(
+    'user15',
+    'user15@gmail.com',
+    'user15password'
+),
+(
+    'user16',
+    'user16@gmail.com',
+    'user16password'
+),
+(
+    'user17',
+    'user17@gmail.com',
+    'user17password'
+),
+(
+    'user18',
+    'user18@gmail.com',
+    'user18password'
+),
+(
+    'user19',
+    'user19@gmail.com',
+    'user19password'
+),
+(
+    'user20',
+    'user20@gmail.com',
+    'user20password'
+),
+(
+    'user21',
+    'user21@gmail.com',
+    'user21password'
+);
