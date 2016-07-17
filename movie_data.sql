@@ -14,7 +14,7 @@ VALUES
     'movie1',
     'genre1',
     'cast1',
-    60.30,
+    60,
     18,
     'synopsis1',
     '2016-07-08'
@@ -23,7 +23,7 @@ VALUES
     'movie2',
     'genre2',
     'cast2',
-    160.30,
+    162,
     18,
     'synopsis2',
     '2016-07-06'
@@ -32,7 +32,7 @@ VALUES
     'movie3',
     'genre3',
     'cast3',
-    150.10,
+    152,
     18,
     'synopsis3',
     '2016-07-05'
@@ -41,7 +41,7 @@ VALUES
     'movie4',
     'genre4',
     'cast4',
-    140.32,
+    141,
     18,
     'synopsis5',
     '2016-07-09'
@@ -50,7 +50,7 @@ VALUES
     'movie5',
     'genre5',
     'cast5',
-    130.30,
+    137,
     18,
     'synopsis5',
     '2016-07-08'
@@ -59,7 +59,7 @@ VALUES
     'movie6',
     'genre6',
     'cast6',
-    160.30,
+    160,
     18,
     'synopsis6',
     '2016-07-07'
@@ -68,7 +68,7 @@ VALUES
     'movie7',
     'genre7',
     'cast7',
-    160.30,
+    168,
     5,
     'synopsis7',
     '2016-07-06'
@@ -77,7 +77,7 @@ VALUES
     'movie8',
     'genre8',
     'cast8',
-    140.30,
+    142,
     18,
     'synopsis8',
     '2016-07-07'
@@ -86,7 +86,7 @@ VALUES
     'movie9',
     'genre9',
     'cast9',
-    150.30,
+    159,
     18,
     'synopsis9',
     '2016-07-05'
@@ -95,7 +95,7 @@ VALUES
     'movie10',
     'genre10',
     'cast10',
-    140.30,
+    141,
     18,
     'synopsis10',
     '2016-07-03'
@@ -104,7 +104,7 @@ VALUES
     'movie11',
     'genre11',
     'cast11',
-    160.30,
+    161,
     18,
     'synopsis11',
     '2016-07-04'
@@ -113,7 +113,7 @@ VALUES
     'movie12',
     'genre12',
     'cast12',
-    130.30,
+    135,
     18,
     'synopsis12',
     '2016-07-04'
@@ -122,7 +122,7 @@ VALUES
     'movie13',
     'genre13',
     'cast13',
-    140.25,
+    141,
     18,
     'synopsis13',
     '2016-07-01'
@@ -131,7 +131,7 @@ VALUES
     'movie14',
     'genre14',
     'cast14',
-    115.30,
+    115,
     18,
     'synopsis14',
     '2016-07-08'
@@ -140,7 +140,7 @@ VALUES
     'movie15',
     'genre15',
     'cast15',
-    160.30,
+    160,
     18,
     'synopsis15',
     '2016-07-08'

@@ -14,7 +14,7 @@ CREATE TABLE Movie(
     title         VARCHAR(50)    PRIMARY KEY,
     genre         VARCHAR(20)    NOT NULL,
     cast          VARCHAR(250)   NOT NULL,  
-    length        DOUBLE         NOT NULL,   
+    length        INT         NOT NULL,   
     rate          DOUBLE         NOT NULL,
     synopsis      VARCHAR(500)   NOT NULL,   
     release_date  DATE           NOT NULL
