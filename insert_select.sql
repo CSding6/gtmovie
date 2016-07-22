@@ -161,3 +161,24 @@ left join Show_time  as s
        on s.theater_ID = o.theater_ID
       and m.title = o.title
     where o.order_id = %s;
+
+
+   select name,
+          state,
+          city,
+          street,
+          zip,
+          num_of_adult_ticket,
+          num_of_senior_ticket,
+          num_of_child_ticket,
+     from Order_info as o 
+left join Theater    as t
+       on o.theater_ID = o.theater_ID
+left join Movie      as m
+       on m.title = o.title
+left join Show_time  as s
+       on s.theater_ID = o.theater_ID
+      and m.title = o.title
+    where o.order_id = %s;
+
+
