@@ -196,3 +196,5 @@ UPDATE Order_info
    where o.status != 'cancalled'
 group by month, title
 order by orders desc, month desc;
+
+
