@@ -182,3 +182,17 @@ left join Show_time  as s
     where o.order_id = %s;
 
 
+-- cancall order
+UPDATE Order_info
+   SET status = 'cancalled'
+ where order_id = %s;
+
+
+-- movie report
+  select month(date) as month,
+         title,
+         count(order_id) as orders
+    from Order_info as o
+   where o.status != 'cancalled'
+group by month, title
+order by orders desc, month desc;
