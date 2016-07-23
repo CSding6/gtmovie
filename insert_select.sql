@@ -198,3 +198,15 @@ group by month, title
 order by orders desc, month desc;
 
 
+-- Revenue Report  
+with tt_sys as (
+    select child_discount,
+           senior_discount
+      from System_info
+)
+  select month(date) as month,
+        (num_of_child_ticket * %s * tt_sys.child_discount 
+          + num_of_senior_ticket * %s * tt_sys.senior_discount
+          + num_of_adult_ticket * %s) as revenue
+        group by month
+        order by month desc;
