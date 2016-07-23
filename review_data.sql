@@ -112,4 +112,109 @@ VALUES
     'good!',
     4.5,
     'user1'
+),
+(
+    16,
+    'movie1',
+    'so good!',
+    4.3,
+    'user1'
+),
+(
+    17,
+    'movie1',
+    'good!',
+    4.4,
+    'user1'
+),
+(
+    18,
+    'movie1',
+    'good!',
+    4.0,
+    'user1'
+),
+(
+    19,
+    'movie1',
+    'good!',
+    4.2,
+    'user1'
+),
+(
+    20,
+    'movie1',
+    'good!',
+    4.7,
+    'user1'
+),
+(
+    21,
+    'movie2',
+    'good!',
+    4.2,
+    'user1'
+),
+(
+    22,
+    'movie2',
+    'good!',
+    4.1,
+    'user1'
+),
+(
+    23,
+    'movie2',
+    'good!',
+    4.1,
+    'user1'
+),
+(
+    24,
+    'movie2',
+    'good!',
+    4.3,
+    'user1'
+),
+(
+    25,
+    'movie3',
+    'good!',
+    4.8,
+    'user1'
+),
+(
+    26,
+    'movie3',
+    'good!',
+    4.4,
+    'user12'
+),
+(
+    27,
+    'movie3',
+    'good!',
+    4.5,
+    'user1'
+),
+(
+    28,
+    'movie3',
+    'good!',
+    4.1,
+    'user1'
+),
+(
+    29,
+    'movie3',
+    'good!',
+    4.9,
+    'user1'
+),
+(
+    30,
+    'movie3',
+    'good!',
+    4.2,
+    'user1'
 );
