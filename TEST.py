@@ -1,5 +1,5 @@
 from tkinter import*
-from tkinter import messagebox
+#from tkinter import messagebox
 import urllib.request
 import base64
 import pymysql
@@ -80,7 +80,9 @@ class cs4400:
         self.ft12 = Frame(self.t1)
         self.ft12.grid(row = 2, column = 0, columnspan = 5, sticky = W+E)
         self.bt11 = Button(self.ft12, text = "Create", command = self.create)
-        self.bt11.pack()
+        self.bt11.grid(row = 0, column = 0, sticky = W)
+        self.bt12 = Button(self.ft12, text = "Cancel", command = self.backtologgin)
+        self.bt12.grid(row = 0, column =1, sticky = E)
         
     def nowPlaying(self):
         #Nowplaying Page
@@ -92,7 +94,7 @@ class cs4400:
         self.nowplayingframe.grid(row = 0, column = 0)
         #Image
         self.photo1 = PhotoImage(file = "/Users/Jacksonfan/Desktop/Test/user.gif")
-        self.image1 = Label(self.nowplayingframe, image = self.photo1)
+        self.image1 = Button(self.nowplayingframe, image = self.photo1,command = self.Me)
         self.image1.grid(row = 0, column = 0, sticky = W)
         self.nowplayinglabel1 = Label(self.nowplayingframe, text = "Now Playing", font = "Helvetica 20 bold italic", fg = "Orange")
         self.nowplayinglabel1.grid(row =0, column = 1,columnspan = 2, sticky = W+N+S+E)
@@ -106,8 +108,9 @@ class cs4400:
             delta = d1 - now
             if (delta.days > -15):
                 self.movietitle.append(i[0])
+        print(self.movietitle)
         for i in self.movietitle[::2]:
-            self.playingmovie = Radiobutton(self.nowplayingframe, text = i,variable = self.variable, value = self.movietitle.index(i), font = "Helvetica 20 bold italic", command = self.showmovie,indicatoron = 0, width = 15)
+            self.playingmovie = Radiobutton(self.nowplayingframe, text = i,variable = self.variable, value = self.movietitle.index(i), font = "Helvetica 20 bold italic", command = self.showmovie, indicatoron = 0, width = 15)
             self.playingmovie.grid(row = self.movietitle.index(i)+1, column = 1, columnspan = 1)
             if(self.movietitle.index(i)+1 < len(self.movietitle)):
                 self.playingmovie2 = Radiobutton(self.nowplayingframe, text = self.movietitle[self.movietitle.index(i)+1],variable = self.variable, value = self.movietitle.index(i)+1,font = "Helvetica 20 bold italic", indicatoron = 0, command = self.showmovie, width = 15)
@@ -128,7 +131,6 @@ class cs4400:
         count = self.cursor.execute(loginCheck, (userName, password))
         if count > 0:
             messagebox.showinfo("Congratulations", "You have successfully logged in")
-            self.Me()
             self.nowPlaying()
         else:
             messagebox.showerror("Error", "Invalid Username or Password")
@@ -158,11 +160,18 @@ class cs4400:
                 self.window.update()
                 self.window.deiconify()
             self.db.commit()
+    def backtomain(self):
+        self.me.withdraw()
+        self.nowplaying.update()
+        self.nowplaying.deiconify()
+        
     
     def Me(self):
         ##Me Window
         self.window.withdraw()
+        self.nowplaying.withdraw()
         self.me = Toplevel()
+        self.me.title("Me")
         ##underlined labels
         Label(self.me,text="Me",font = "Helvetica 16 bold italic",fg = "Orange").grid(row=0,column=0)
         self.orderhist=Label(self.me,text="My Order History",underline=0,fg="blue")
@@ -171,18 +180,163 @@ class cs4400:
         self.mypayinfo.grid(row=2,column=0)
         self.mypreferthea=Label(self.me,text="My Preferrred Theater",underline=0,fg="blue")
         self.mypreferthea.grid(row=3,column=0)
-        self.meback=Button(self.me,text="Back",relief=RAISED)
+        self.meback=Button(self.me,text="Back",relief=RAISED, command = self.backtomain)
         self.meback.grid(row=4,column=0)
         
     def showmovie(self):
         print(self.variable.get())
         self.nowplaying.withdraw()
         self.movieshow = Toplevel()
-        self.movieshowframe = Label()
+        self.movieshow.title("Movie")
+        #topside part
+        self.movieshowframe0 = Frame(self.movieshow)
+        self.movieshowframe0.grid(row = 0, column = 0, columnspan = 1)
+        movietitle = Label(self.movieshowframe0, text = self.movietitle[self.variable.get()], font = "Helvetica 30 bold italic", fg = "Orange")
+        movietitle.grid(row = 0, column = 0, sticky = W)
+        print(self.movietitle[self.variable.get()])
+        #leftside part
+        self.movieshowframe = Frame(self.movieshow, bg = "black")
+        self.movieshowframe.grid(row = 1, column = 0, sticky = W)
+        released = Label(self.movieshowframe, text = "Released", font ="Times 20 italic", fg = "white", bg = "black" )
+        released.grid(row = 0, column = 0,sticky = W+E)
+        releasedatesql = "SELECT release_date FROM movie WHERE title = %s"
+        self.cursor.execute(releasedatesql, self.movietitle[self.variable.get()])
+        releasedate = self.cursor.fetchall()
+        releasedatelabel = Label(self.movieshowframe, text = releasedate, font = "Helvetica 30 bold",fg = "white", bg = "black")
+        releasedatelabel.grid(row =1, column = 0, sticky =W+E )
+        generalinfosql = "SELECT rate, length, genre FROM movie WHERE title = %s"
+        self.cursor.execute(generalinfosql, self.movietitle[self.variable.get()])
+        generalinfo = self.cursor.fetchone()
+        print(generalinfo)
+        rating = generalinfo[0]
+        if(int(generalinfo[1])% 60 < 10):
+            length= str(int(generalinfo[1])//60) + ":" + "0"+str(int(generalinfo[1]) % 60) + ":00"
+        else:
+            length= str(int(generalinfo[1])//60) + ":" +str(int(generalinfo[1]) % 60) + ":00"
+        genre = generalinfo[2]
+        ratelengthlabel = Label(self.movieshowframe, text = str(rating) +", " + length,font ="Times 20 italic", fg = "white", bg = "black")
+        ratelengthlabel.grid(row = 2, column = 0, sticky = W+E)
+        genrelabel = Label(self.movieshowframe, text =genre, fg = "white",font ="Times 20 italic", bg = "black")
+        genrelabel.grid(row = 3, column = 0, sticky = W+E)
+        fanrating = "SELECT rating, COUNT(*) FROM review WHERE title = %s GROUP BY title"
+        self.cursor.execute(fanrating, self.movietitle[self.variable.get()] )
+        self.rating_info = self.cursor.fetchone()
+        if(self.rating_info == None):
+            pass
+        else:
+            self.star_rating = self.rating_info[0]
+            self.fan_number = self.rating_info[1]
+        ratinglabel = Label(self.movieshowframe, text = "Rating: " + str(self.star_rating) + "/5.0", fg = "white", font = "Times 20 italic", bg = "black")
+        ratinglabel.grid(row = 4, column = 0, sticky = W+E)
+        fannumberlabel = Label(self.movieshowframe, text = self.fan_number, fg = "white", font = "Times 30 italic", bg = "black")
+        fannumberlabel.grid(row = 5, column = 0, sticky = W+E)
+        
+        
+        
+        
+        #rightside part
+        self.movieshowframe2 = Frame(self.movieshow)
+        self.movieshowframe2.grid(row = 1, column =1)
+        self.variableshowmovie = IntVar()
+        overviewradiobutton = Radiobutton(self.movieshowframe2, text ="Overview", variable = self.variableshowmovie, font = "Helvetica 20 bold",value= 1, command = self.overview)
+        overviewradiobutton.grid(row = 0, column = 0, sticky = W)
+        moviereviewradiobutton = Radiobutton(self.movieshowframe2, text = "Movie Review", variable = self.variableshowmovie, font = "Helvetica 20 bold", value = 2, command = self.moviereview)
+        moviereviewradiobutton.grid(row = 1, column = 0, sticky = W)
+        buyticketradiobutton = Radiobutton(self.movieshowframe2, text = "Buy Ticket", variable = self.variableshowmovie, font = "Helvetica 20 bold italic", value = 3, command = self.buyticket)
+        buyticketradiobutton.grid(row = 2, column = 0,sticky = W)
+        
+    def backtologgin(self):
+        self.t1.withdraw()
+        self.window.update()
+        self.window.deiconify()
+
+
+    def buyticket(self):
+        self.movieshow.withdraw()
+
+    def overview(self):
+
+        self.movieshow.withdraw()
+        self.overview = Toplevel()
+        self.overview.title("Overview")
+        titleframe = Frame(self.overview)
+        titleframe.grid(row = 0, column = 0)
+        movietitle = Label(titleframe, text = self.movietitle[self.variable.get()], fg = "Orange", font = "Helvetica 30 bold")
+        movietitle.grid(row = 0, column = 0)
+        synopsisstatement = "SELECT synopsis FROM movie WHERE title = %s LIMIT 5"
+        self.cursor.execute(synopsisstatement, self.movietitle[self.variable.get()])
+        synopsistxt = self.cursor.fetchall()
+        print(synopsistxt)
+        synopFrame = Frame(self.overview)
+        synopFrame.grid(row = 1, column = 0)
+        synoptitle = Label(synopFrame, text = "Synopsis", font = "Helvetica 20 bold")
+        synoptitle.grid(row = 0, column = 0)
+        synopLabel = Label(synopFrame, text = synopsistxt)
+        synopLabel.grid(row =1, column = 0, columnspan = 3)
+        castframe = Frame(self.overview)
+        castframe.grid(row = 2, column = 0)
+        castselect = "SELECT cast FROM movie WHERE title = %s"
+        self.cursor.execute(castselect, self.movietitle[self.variable.get()])
+        castname = self.cursor.fetchall()
+        castLabel = Label(castframe, text = castname, fg = "Blue", font = "Helvetica 15 bold")
+        castLabel.grid(row = 0, column = 0)
+        back = Button(castframe, text = "Back", command = self.backtoshowmovie)
+        back.grid(row = 1, column = 0)
+        
+    def backtoshowmovie(self):
+        self.overview.withdraw()
+        self.movieshow.update()
+        self.movieshow.deiconify()
+    def backtoshowmovie2(self):
+        self.moviereview.withdraw()
+        self.movieshow.update()
+        self.movieshow.deiconify()
+
+    def moviereview(self):
+        self.movieshow.withdraw()
+        self.moviereview = Toplevel()
+ #       scrollbar = Scrollbar(self.moviereview)
+#        scrollbar.pack(side=RIGHT, fill=Y)
+        self.moviereview.title("Review")
+        titleframe = Frame(self.moviereview)
+        titleframe.grid(row = 0, column = 0)
+        title = Label(titleframe, text = self.movietitle[self.variable.get()], fg = "Orange", font = "Helvetica 30 bold")
+        title.grid(row = 0, column = 0)
+        avgrating = Label(titleframe, text = str(self.star_rating) + "/5.0", font = "Helvetica 20")
+        avgrating.grid(row = 0, column = 1)
+        givereview = Frame(self.moviereview)
+        givereview.grid(row = 1, column = 0)
+        give = Button(givereview, text = "Give Review", width = 50, borderwidth = 1, command = self.givereview, highlightbackground = "Black")
+        give.pack()
+        main = Frame(self.moviereview)
+        main.grid(row = 2, column = 0)
+        review = "SELECT username, rating, comment FROM review WHERE title = %s"
+        self.cursor.execute(review,  self.movietitle[self.variable.get()])
+        reviewdata = self.cursor.fetchall()
+        print(reviewdata)
+        for i in range(len(reviewdata)):
+            l = Label(main, text = "User: " + str(reviewdata[i][0]) + "\n" + "Rating: " + str(reviewdata[i][1]) + "\n" + "Comment: " + str(reviewdata[i][2]) + "\n", anchor = W, justify = LEFT,
+                      width = 50, borderwidth = 2, highlightbackground = "Black")
+            l.grid(row = i, column = 0, padx = 0.5, pady = 0.5)
+        backframe = Frame(self.moviereview)
+        backframe.grid(row = 3, column = 0)
+        back = Button(backframe, text = "Back", width = 10, command = self.backtoshowmovie2, highlightbackground = "Black")
+        back.grid(row = 0, column = 0, sticky = W)
+                
+
+    def givereview(self):
+        self.moviereview.withdraw()
+        self.giverevieew = Toplevel()
+        self.givereview.title("")
+        
+
+        
         
 
 #maincode
 win = Tk()
+win.resizable(width = False, height = False)
+win.geometry("600x600")
 run  = cs4400(win)
 win.mainloop()
 
