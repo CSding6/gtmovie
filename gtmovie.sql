@@ -31,7 +31,7 @@ CREATE TABLE Review (
 );
 
 CREATE TABLE Payment_info(
-    card_num               INT             PRIMARY KEY,
+    card_num               VARCHAR(16)     PRIMARY KEY,
     name_on_card           VARCHAR(30)     NOT NULL, 
     cvv                    INT             NOT NULL,
     saved                  BOOLEAN         NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE Order_info(
     num_of_senior_ticket     INT            NOT NULL     DEFAULT 0,     
     num_of_total_ticket      INT            NOT NULL     DEFAULT 0,
     username                 VARCHAR(15)    NOT NULL, 
-    card_num                 INT            NOT NULL,
+    card_num                 VARCHAR(16)    NOT NULL,
     title                    VARCHAR(50)    NOT NULL,
     theater_ID               INT            NOT NULL,
     FOREIGN KEY (username)   REFERENCES Customer(username),

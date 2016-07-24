@@ -173,12 +173,12 @@ left join Show_time  as s
           num_of_child_ticket,
      from Order_info as o 
 left join Theater    as t
-       on o.theater_ID = o.theater_ID
+       on o.theater_ID = t.theater_ID
 left join Movie      as m
-       on m.title = o.title
+       on o.title = t.title
 left join Show_time  as s
-       on s.theater_ID = o.theater_ID
-      and m.title = o.title
+       on o.theater_ID = s.theater_ID
+      and o.title = s.title
     where o.order_id = %s;
 
 
